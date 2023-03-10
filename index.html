@@ -3,15 +3,15 @@
   <head>
     <title>My Webpage</title>
     <style>
-      #clippy {
-        align-items: center;
+      /* #clippy { */
+        /* align-items: center;
         margin: auto;
-        display: block;
+        display: block; */
         /* background-image: url("clippy.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center; */
-      }
+      /* } */
       #bubble {
         align-items: center;
         margin-left: auto;
@@ -47,6 +47,17 @@
         cursor: pointer;
         display: inline-block; /* add this */
       }
+      #centered-element {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 400px;
+                background-image: url("clippy.png");
+
+        /* background-color: blue; */
+      }
       /* body {
         background-image: url("speechbubble.png");
         background-repeat: no-repeat;
@@ -57,7 +68,8 @@
   </head>
   <body>
     <div><img id="bubbble" src="speechbubble.png" width="500px"></div>
-    <div><img id="clippy" src="clippy.png"></div>
+    <!-- <div><img id="clippy" src="clippy.png"></div> -->
+    <div id="centered-element"></div>
     <div id="form-container">
       <form id="chat-gpt">
         <label for="message">Enter your message:</label>
