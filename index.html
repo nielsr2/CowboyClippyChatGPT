@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Webpage</title>
+    <style>
+      body {
+        background-image: url("https://example.com/background.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      #form-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 20px;
+      }
+      input[type="text"] {
+        width: 70%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      body {
+        background-image: url("speechbubble.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="form-container">
+      <form id="chat-gpt">
+        <label for="message">Enter your message:</label>
+        <br>
+        <input type="text" id="text-input" name="message" placeholder="Type your message here...">
+        <br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div id="bubble">
+<p id="gpt-output"></p>
+    </div>
+    <script>
+      async function postData(url = "", data = {}) {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+
+        const text = await response.text();
+        try {
+          const json = JSON.parse(text);
+          return json;
+        } catch (err) {
+          throw new Error(`Failed to parse response as JSON: ${text}`);
+        }
+      }
+
+      const gptForm = document.getElementById("chat-gpt");
+      gptForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const textInput = document.getElementById("text-input");
+        const gptOutput = document.getElementById("gpt-output");
+
+        const gpt_message = {
+          "model": "gpt-3.5-turbo",
+          "messages": [
+            {
+              "role": "user",
+              "content": textInput.value
+            }
+          ]
+        };
+
+        postData("https://chatgpt-api.shn.hk/v1/", gpt_message)
+          .then((response) => {
+            var message = response.choices[0].message.content;
+            console.log(message);
+            gptOutput.textContent = message;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+    </script>
+  </body>
+</html>
