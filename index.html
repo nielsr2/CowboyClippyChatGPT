@@ -3,11 +3,24 @@
   <head>
     <title>My Webpage</title>
     <style>
-      body {
-        background-image: url("https://example.com/background.jpg");
+      #clippy {
+        align-items: center;
+        margin: auto;
+        display: block;
+        /* background-image: url("clippy.png");
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: center;
+        background-position: center; */
+      }
+      #bubble {
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        /* background-image: url("speechbubble.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center; */
       }
       #form-container {
         position: fixed;
@@ -32,15 +45,17 @@
         border-radius: 4px;
         cursor: pointer;
       }
-      body {
+      /* body {
         background-image: url("speechbubble.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-      }
+      } */
     </style>
   </head>
   <body>
+    <div><img id="bubbble" src="speechbubble.png" width="500px"></div>
+    <div><img id="clippy" src="clippy.png"></div>
     <div id="form-container">
       <form id="chat-gpt">
         <label for="message">Enter your message:</label>
@@ -50,7 +65,6 @@
         <input type="submit" value="Submit">
       </form>
     </div>
-    <div id="bubble">
 <p id="gpt-output"></p>
     </div>
     <script>
