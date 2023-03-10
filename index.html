@@ -24,7 +24,7 @@
       }
       #form-container {
         position: fixed;
-        bottom: 0;
+        bottom: 10%;
         left: 0;
         width: 100%;
         background-color: white;
@@ -36,6 +36,7 @@
         border: 2px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
+        display: inline-block; /* add this */
       }
       input[type="submit"] {
         background-color: #4CAF50;
@@ -44,6 +45,7 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
+        display: inline-block; /* add this */
       }
       /* body {
         background-image: url("speechbubble.png");
@@ -60,12 +62,12 @@
       <form id="chat-gpt">
         <label for="message">Enter your message:</label>
         <br>
-        <input type="text" id="text-input" name="message" placeholder="Type your message here...">
+        <input type="text" id="text-input" name="message" placeholder="Hello, I'm cowboy GTP Clippy - How may I assist you?">
+        <input type="submit" value="Submit"> <!-- move this to the right -->
         <br>
-        <input type="submit" value="Submit">
       </form>
     </div>
-<p id="gpt-output"></p>
+      <p id="gpt-output"></p>
     </div>
     <script>
       async function postData(url = "", data = {}) {
